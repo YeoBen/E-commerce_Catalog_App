@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BoostorderCatalogClient/BoostorderCatalogClient.csproj" />
+  <Project Path="BoostorderCatalogServer/BoostorderCatalogServer.csproj" />
+</Solution>

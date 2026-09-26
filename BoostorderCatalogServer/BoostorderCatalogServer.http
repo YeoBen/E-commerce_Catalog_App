@@ -1,0 +1,6 @@
+@BoostorderCatalogServer_HostAddress = http://localhost:5231
+
+GET {{BoostorderCatalogServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
