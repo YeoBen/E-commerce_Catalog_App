@@ -1,0 +1,130 @@
+@page "/cart"
+@implements IDisposable
+@inject ICartService CartService
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<PageTitle>Cart</PageTitle>
+
+<div class="cart-page">
+    <div class="header">
+        <button class="icon-btn" @onclick="GoBack" aria-label="Back">&#8592;</button>
+        <span class="header-title">Cart</span>
+        <span class="company">Company Name</span>
+        <div class="avatar">CN</div>
+        <button class="icon-btn" @onclick="ToggleMenu" aria-label="Menu">&#8942;</button>
+    </div>
+
+    @if (_showMenu)
+    {
+        <div class="menu-dropdown">
+            <button @onclick="ClearCart">Clear cart</button>
+        </div>
+    }
+
+    @if (!CartService.Items.Any())
+    {
+        <p class="status-text">Your cart is empty.</p>
+    }
+    else
+    {
+        <div class="cart-list" id="cart-list">
+            @{ int index = 0; }
+            @foreach (var item in CartService.Items)
+            {
+                index++;
+                <div class="cart-row" data-product-id="@item.ProductId" data-uom="@item.Uom">
+                    <div class="cart-row-top">
+                        <div class="cart-info">
+                            <div class="sku-line">
+                                <span class="index">@index.</span>
+                                <span class="sku">@item.ProductSku</span>
+                                <span class="stock">@item.StockQuantity In stock</span>
+                            </div>
+                            <div class="product-name">@item.ProductName</div>
+                            <div class="product-price">RM @item.UnitPrice.ToString("0.00")</div>
+                        </div>
+
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img class="cart-thumb" src="@item.ImageUrl" alt="@item.ProductName" />
+                        }
+                        else
+                        {
+                            <div class="cart-thumb placeholder"></div>
+                        }
+                    </div>
+
+                    <div class="order-total-row">
+                        <div class="accent-block">
+                            <span class="accent-bar blue"></span>
+                            <div>
+                                <span class="label">Order</span>
+                                <span class="value">@item.Quantity @item.Uom &rsaquo;</span>
+                            </div>
+                        </div>
+                        <div class="accent-block">
+                            <span class="accent-bar yellow"></span>
+                            <div>
+                                <span class="label">Total</span>
+                                <span class="value">RM @item.Total.ToString("0.00")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="cart-subtotal">
+                <span>Total</span>
+                <strong>RM @CartService.GrandTotal.ToString("0.00")</strong>
+            </div>
+        </div>
+    }
+</div>
+
+@if (CartService.Items.Any())
+{
+    <div class="cart-footer">
+        <div class="footer-total">
+            <span>Total (@CartService.Items.Sum(i => i.Quantity))</span>
+            <strong>RM @CartService.GrandTotal.ToString("0.00")</strong>
+        </div>
+        <button class="checkout-btn">Checkout</button>
+    </div>
+}
+
+@code {
+    private bool _showMenu = false;
+    private DotNetObjectReference<Cart>? _dotNetRef;
+
+    protected override void OnInitialized()
+    {
+        CartService.OnChange += StateHasChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _dotNetRef = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("initSwipeToRemove", "cart-list", _dotNetRef);
+        }
+    }
+
+    [JSInvokable]
+    public void OnSwipeRemove(int productId, string uom)
+    {
+        CartService.Remove(productId, uom);
+        StateHasChanged();
+    }
+
+    private void GoBack() => Nav.NavigateTo("/");
+    private void ToggleMenu() => _showMenu = !_showMenu;
+    private void ClearCart() { CartService.Clear(); _showMenu = false; }
+
+    public void Dispose()
+    {
+        CartService.OnChange -= StateHasChanged;
+        _dotNetRef?.Dispose();
+    }
+}

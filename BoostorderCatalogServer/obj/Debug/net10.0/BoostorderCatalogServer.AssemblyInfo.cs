@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BoostorderCatalogServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd281009546760bb36e20a12fd87138d6e6891e1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+86771d61cbed4f68432b3684ab3321fe0c43059d")]
 [assembly: System.Reflection.AssemblyProductAttribute("BoostorderCatalogServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BoostorderCatalogServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

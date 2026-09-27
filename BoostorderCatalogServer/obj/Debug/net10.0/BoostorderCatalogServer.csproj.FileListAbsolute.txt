@@ -21,6 +21,7 @@ C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalog
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\BoostorderCatalogServer.runtimeconfig.json
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\BoostorderCatalogServer.dll
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\BoostorderCatalogServer.pdb
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\Blazor.Storage.dll
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\Microsoft.AspNetCore.Components.WebAssembly.dll
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\Microsoft.AspNetCore.Components.WebAssembly.Server.dll
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
@@ -53,7 +54,9 @@ C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalog
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\BoostorderCatalogClient.dll
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\BoostorderCatalogShared.dll
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\BoostorderCatalogClient.pdb
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\bin\Debug\net10.0\BoostorderCatalogShared.pdb
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\BoostorderCatalogServer.csproj.AssemblyReference.cache
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\rpswa.dswa.cache.json
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\BoostorderCatalogServer.GeneratedMSBuildEditorConfig.editorconfig
@@ -68,6 +71,7 @@ C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalog
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\jsmodules\jsmodules.build.manifest.json
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\scopedcss\bundle\BoostorderCatalogServer.styles.css
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\compressed\12x8ovv9tc-{0}-4ooi3bhemj-4ooi3bhemj.gz
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\compressed\306ybj91o3-{0}-rebfl1bnxw-rebfl1bnxw.gz
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogServer\obj\Debug\net10.0\staticwebassets.build.json.cache

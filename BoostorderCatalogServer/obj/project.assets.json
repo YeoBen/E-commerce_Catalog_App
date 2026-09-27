@@ -2,6 +2,25 @@
   "version": 4,
   "targets": {
     "net10.0": {
+      "Blazor.Storage/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Blazor.Storage.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Blazor.Storage.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Blazor.Storage.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazor.Storage.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Components.WebAssembly/10.0.12": {
         "type": "package",
         "dependencies": {
@@ -261,6 +280,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
+          "Blazor.Storage": "5.0.0",
+          "BoostorderCatalogShared": "1.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly": "10.0.9",
           "Microsoft.Data.Sqlite": "10.0.12"
         },
@@ -270,10 +291,41 @@
         "runtime": {
           "bin/placeholder/BoostorderCatalogClient.dll": {}
         }
+      },
+      "BoostorderCatalogShared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/BoostorderCatalogShared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BoostorderCatalogShared.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "Blazor.Storage/5.0.0": {
+      "sha512": "IjOU4sRnowb6tNr2Vosk7x5QXoGU7Cdf26TnHiQ56WnSznVumtHvhWvtsKbk+sfUF3DrKpYXf/YkR867IlkoWg==",
+      "type": "package",
+      "path": "blazor.storage/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "blazor.storage.5.0.0.nupkg.sha512",
+        "blazor.storage.nuspec",
+        "build/Blazor.Storage.props",
+        "build/Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazor.Storage.props",
+        "buildTransitive/Blazor.Storage.props",
+        "icon.png",
+        "lib/net10.0/Blazor.Storage.dll",
+        "lib/net10.0/Blazor.Storage.xml",
+        "staticwebassets/Blazored.LocalStorage.js"
+      ]
+    },
     "Microsoft.AspNetCore.Components.WebAssembly/10.0.12": {
       "sha512": "/IEbzyCnW0t+1ZQcxcV3Aj65gus2ILsUaA8U0rnkSGRQbKlJxr/5YOifOLq0eLrM0m3kXEV/A3iEwrqT3tgwiw==",
       "type": "package",
@@ -494,11 +546,17 @@
       "type": "project",
       "path": "../BoostorderCatalogClient/BoostorderCatalogClient.csproj",
       "msbuildProject": "../BoostorderCatalogClient/BoostorderCatalogClient.csproj"
+    },
+    "BoostorderCatalogShared/1.0.0": {
+      "type": "project",
+      "path": "../BoostorderCatalogShared/BoostorderCatalogShared.csproj",
+      "msbuildProject": "../BoostorderCatalogShared/BoostorderCatalogShared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
       "BoostorderCatalogClient >= 1.0.0",
+      "BoostorderCatalogShared >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 10.0.12",
       "Microsoft.AspNetCore.OpenApi >= 10.0.9"
     ]
@@ -532,6 +590,9 @@
           "projectReferences": {
             "C:\\Users\\User\\Documents\\Repositories\\C#\\E-commerce_Catalog_App\\BoostorderCatalogClient\\BoostorderCatalogClient.csproj": {
               "projectPath": "C:\\Users\\User\\Documents\\Repositories\\C#\\E-commerce_Catalog_App\\BoostorderCatalogClient\\BoostorderCatalogClient.csproj"
+            },
+            "C:\\Users\\User\\Documents\\Repositories\\C#\\E-commerce_Catalog_App\\BoostorderCatalogShared\\BoostorderCatalogShared.csproj": {
+              "projectPath": "C:\\Users\\User\\Documents\\Repositories\\C#\\E-commerce_Catalog_App\\BoostorderCatalogShared\\BoostorderCatalogShared.csproj"
             }
           }
         }

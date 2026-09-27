@@ -1,6 +1,8 @@
+using BoostorderCatalogShared;
+
 namespace BoostorderCatalog.Services;
 
 public interface IProductApiService
 {
-    Task<List<Models.Product>> GetVariableProductsAsync();
+    Task<List<Product>> GetVariableProductsAsync();
 }

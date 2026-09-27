@@ -12,6 +12,9 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\User\.nuget\packages\" />
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)blazor.storage\5.0.0\buildTransitive\Blazor.Storage.props" Condition="Exists('$(NuGetPackageRoot)blazor.storage\5.0.0\buildTransitive\Blazor.Storage.props')" />
+  </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_AspNetCore_Components_WebAssembly_Server Condition=" '$(PkgMicrosoft_AspNetCore_Components_WebAssembly_Server)' == '' ">C:\Users\User\.nuget\packages\microsoft.aspnetcore.components.webassembly.server\10.0.12</PkgMicrosoft_AspNetCore_Components_WebAssembly_Server>
   </PropertyGroup>

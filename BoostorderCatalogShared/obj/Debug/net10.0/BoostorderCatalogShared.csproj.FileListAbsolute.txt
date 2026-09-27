@@ -1,0 +1,12 @@
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\bin\Debug\net10.0\BoostorderCatalogShared.deps.json
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\bin\Debug\net10.0\BoostorderCatalogShared.dll
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\bin\Debug\net10.0\BoostorderCatalogShared.pdb
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\BoostorderCatalogShared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\BoostorderCatalogShared.AssemblyInfoInputs.cache
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\BoostorderCatalogShared.AssemblyInfo.cs
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\BoostorderCatalogShared.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\BoostorderCatalogShared.sourcelink.json
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\BoostorderCatalogShared.dll
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\refint\BoostorderCatalogShared.dll
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\BoostorderCatalogShared.pdb
+C:\Users\User\Documents\Repositories\C#\E-commerce_Catalog_App\BoostorderCatalogShared\obj\Debug\net10.0\ref\BoostorderCatalogShared.dll

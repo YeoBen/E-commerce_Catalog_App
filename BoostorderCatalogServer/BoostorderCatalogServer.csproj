@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BoostorderCatalogClient\BoostorderCatalogClient.csproj" />
+    <ProjectReference Include="..\BoostorderCatalogShared\BoostorderCatalogShared.csproj" />
   </ItemGroup>
 
 </Project>

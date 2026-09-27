@@ -1,21 +1,43 @@
-using BoostorderCatalog.Models;
+using BoostorderCatalogShared;
+using Blazored.LocalStorage;
 
 namespace BoostorderCatalog.Services;
 
 public class CatalogRepository : ICatalogRepository
 {
-    public CatalogRepository()
+    private const string CacheKey = "cached_Products";
+    private readonly ILocalStorageService _localStorage;
+    private readonly IProductApiService _productApiService;
+
+    public CatalogRepository(ILocalStorageService localStorage, IProductApiService productApiService)
     {
-        throw new NotImplementedException();
+        _localStorage = localStorage;
+        _productApiService = productApiService;
     }
 
-    public Task<List<Product>> GetCachedProductsAsync()
+    public async Task SaveProductsAsync(List<Product> products)
     {
-        throw new NotImplementedException();
+        await _localStorage.SetItemAsync(CacheKey, products);
     }
 
-    public Task SaveProductsAsync(List<Product> products)
+    public async Task<List<Product>> GetCachedProductsAsync()
     {
-        throw new NotImplementedException();
+        var cached = await _localStorage.GetItemAsync<List<Product>>(CacheKey);
+        return cached ?? new List<Product>();
+    }
+
+    public async Task<List<Product>> GetProductsAsync()
+    {
+        try
+        {
+            var liveProduct = await _productApiService.GetVariableProductsAsync();
+            await SaveProductsAsync(liveProduct);
+            return liveProduct;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Live fetch failed, falling back to cache: {ex.Message}");
+            return await GetCachedProductsAsync();
+        }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using BoostorderCatalog.Services;
 using BoostorderCatalog;
 using System.Text;
+using Blazored.LocalStorage;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -12,31 +13,29 @@ var apiPassword = builder.Configuration["BoostorderApi:Password"];
 var credentials = Convert.ToBase64String(
     Encoding.ASCII.GetBytes($"{apiUsername}:{apiPassword}"));
 
-builder.Services.AddHttpClient("BoostorderApi", client =>
-{
-    client.BaseAddress = new Uri("https://cloud.boostorder.com/bo-mart/api/v1/wp-json/wc/v1/bo/");
-});
-
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped<IProductApiService, ProductApiService>();
 builder.Services.AddScoped<ICatalogRepository, CatalogRepository>();
 builder.Services.AddScoped<ICartService, CartService>();
+builder.Services.AddScoped(sp => new HttpClient {
+    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+});
 
 var app = builder.Build();
 
 // Test the ProductApiService
 try {
-    var testService = app.Services.GetRequiredService<IProductApiService>();
-    var testProducts = await testService.GetVariableProductsAsync();
+    var catalogRepo = app.Services.GetRequiredService<ICatalogRepository>();
+    var products = await catalogRepo.GetProductsAsync();
 
-    Console.WriteLine($"Fetched {testProducts.Count} variable products");
+    Console.WriteLine($"Loaded {products.Count} products (live or cached)");
 } 
 catch (Exception ex) 
 {
-    Console.WriteLine($"API call failed: {ex.GetType().Name}: {ex.Message}");
-    Console.WriteLine($"API call failed: {ex}");
+    Console.WriteLine($"Catalog load failed: {ex}");
 }
 
 await app.RunAsync();

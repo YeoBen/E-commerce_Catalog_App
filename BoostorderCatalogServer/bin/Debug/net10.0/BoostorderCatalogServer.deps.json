@@ -9,11 +9,20 @@
       "BoostorderCatalogServer/1.0.0": {
         "dependencies": {
           "BoostorderCatalogClient": "1.0.0",
+          "BoostorderCatalogShared": "1.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "10.0.12",
           "Microsoft.AspNetCore.OpenApi": "10.0.9"
         },
         "runtime": {
           "BoostorderCatalogServer.dll": {}
+        }
+      },
+      "Blazor.Storage/5.0.0": {
+        "runtime": {
+          "lib/net10.0/Blazor.Storage.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
         }
       },
       "Microsoft.AspNetCore.Components.WebAssembly/10.0.12": {
@@ -230,11 +239,21 @@
       },
       "BoostorderCatalogClient/1.0.0": {
         "dependencies": {
+          "Blazor.Storage": "5.0.0",
+          "BoostorderCatalogShared": "1.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly": "10.0.12",
           "Microsoft.Data.Sqlite": "10.0.12"
         },
         "runtime": {
           "BoostorderCatalogClient.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "BoostorderCatalogShared/1.0.0": {
+        "runtime": {
+          "BoostorderCatalogShared.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -247,6 +266,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Blazor.Storage/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IjOU4sRnowb6tNr2Vosk7x5QXoGU7Cdf26TnHiQ56WnSznVumtHvhWvtsKbk+sfUF3DrKpYXf/YkR867IlkoWg==",
+      "path": "blazor.storage/5.0.0",
+      "hashPath": "blazor.storage.5.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Components.WebAssembly/10.0.12": {
       "type": "package",
@@ -326,6 +352,11 @@
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.1.12.nupkg.sha512"
     },
     "BoostorderCatalogClient/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BoostorderCatalogShared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

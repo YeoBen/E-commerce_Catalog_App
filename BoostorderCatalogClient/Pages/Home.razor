@@ -1,7 +1,142 @@
-﻿@page "/"
+@page "/"
+@inject ICatalogRepository CatalogRepository
+@inject ICartService CartService
+@inject NavigationManager Nav
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Categories Name</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="catalog-page">
+    <div class="header">
+        <button class="icon-btn" aria-label="Back">&#8592;</button>
+        <span class="header-title">Categories Name</span>
+        <span class="company">Company Name</span>
+        <div class="avatar">CN</div>
+        <button class="icon-btn" aria-label="Menu">&#8942;</button>
+    </div>
 
-Welcome to your new app.
+    <div class="search-row">
+        <div class="search-box-wrapper">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="11" cy="11" r="7" stroke="#999" stroke-width="2"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#999" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <input class="search-box" placeholder="Search" @bind="_searchTerm" @bind:event="oninput" />
+        </div>
+        <div class="cart-icon" @onclick="GoToCart">
+            🛒
+            @if (CartService.LineItemCount > 0)
+            {
+                <span class="cart-badge">@CartService.LineItemCount</span>
+            }
+        </div>
+    </div>
+
+    @if (_loading)
+    {
+        <p class="status-text">Loading...</p>
+    }
+    else if (!_filteredProducts.Any())
+    {
+        <p class="status-text">No products found.</p>
+    }
+    else
+    {
+        <div class="product-list">
+            @foreach (var product in _filteredProducts)
+            {
+                var state = GetOrCreateState(product);
+                var selectedVariation = product.Variations.FirstOrDefault(v => v.Uom == state.Uom)
+                                        ?? product.Variations.FirstOrDefault();
+
+                
+                <div class="product-row">
+                    <div class="product-row-top">
+                        <div class="product-info">
+                            <div class="sku-line">
+                                <span class="sku">@product.Sku</span>
+                                <span class="stock">@(selectedVariation?.StockQuantity ?? 0) In stock</span>
+                            </div>
+                            <div class="product-name">@product.Name</div>
+                            <div class="product-price">RM @selectedVariation?.Price.ToString("0.00")</div>
+                        </div>
+                        @if (product.Images.Any())
+                        {
+                            <img class="product-thumb" src="@product.Images.First().Src" alt="@product.Name" />
+                        }
+                    </div>
+                    <div class="controls-row">
+                        <div class="uom-stepper-group">
+                            <div class="uom-select-wrapper">
+                                <select class="uom-select" @bind="state.Uom">
+                                    @foreach (var variation in product.Variations)
+                                    {
+                                        <option value="@variation.Uom">@variation.Uom</option>
+                                    }
+                                </select>
+                                <span class="uom-corner-triangle"></span>
+                            </div>
+                            <div class="stepper">
+                                <button @onclick="() => ChangeQuantity(state, -1)">−</button>
+                                <span>@state.Quantity</span>
+                                <button @onclick="() => ChangeQuantity(state, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="add-btn" @onclick="() => AddToCart(product, selectedVariation, state)">+</button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private List<Product> _products = new();
+    private bool _loading = true;
+    private string _searchTerm = "";
+
+    private void GoToCart()
+    {
+        Nav.NavigateTo("/cart");
+    }
+
+    private class RowState
+    {
+        public string Uom { get; set; } = "";
+        public int Quantity { get; set; } = 1;
+    }
+
+    private readonly Dictionary<int, RowState> _rowStates = new();
+
+    private IEnumerable<Product> _filteredProducts =>
+        string.IsNullOrWhiteSpace(_searchTerm)
+            ? _products
+            : _products.Where(p => p.Name.Contains(_searchTerm, StringComparison.OrdinalIgnoreCase)
+                                 || p.Sku.Contains(_searchTerm, StringComparison.OrdinalIgnoreCase));
+
+    protected override async Task OnInitializedAsync()
+    {
+        _products = await CatalogRepository.GetProductsAsync();
+        _loading = false;
+    }
+
+    private RowState GetOrCreateState(Product product)
+    {
+        if (!_rowStates.TryGetValue(product.Id, out var state))
+        {
+            state = new RowState { Uom = product.Variations.FirstOrDefault()?.Uom ?? "" };
+            _rowStates[product.Id] = state;
+        }
+        return state;
+    }
+
+    private void ChangeQuantity(RowState state, int delta)
+    {
+        state.Quantity = Math.Max(1, state.Quantity + delta);
+    }
+
+    private void AddToCart(Product product, Variation? variation, RowState state)
+    {
+        if (variation is null) return;
+        CartService.AddOrUpdate(product, variation.Uom, state.Quantity);
+    }
+}
